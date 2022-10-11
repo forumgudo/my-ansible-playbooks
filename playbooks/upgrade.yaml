@@ -1,0 +1,24 @@
+---
+- hosts: ubuntuservers
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: preform a dist-upgrade.
+      ansible.bultin.apt:
+        upgrade: dist
+        update_cach: yes
+
+    - name: check if reboot is requierd.
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+        get_md5: no
+      register: reboot_required_file
+
+    - name: Reboot the server (if required)
+      ansible.builtin.reboot:
+      when: reboot_required_file.stat.exists == true
+
+    - name: Remove dependencies that are no longer requierd.
+      ansible.builtin.apt:
+        autoremove: yes
