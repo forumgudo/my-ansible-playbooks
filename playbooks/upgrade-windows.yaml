@@ -1,0 +1,17 @@
+---
+- hosts: win
+  gather_facts: False
+  tasks:
+    # Check if there are missing updates
+    - name: Check for missing updates.
+      win_updates:
+        state: installed
+        category_names:
+          - CriticalUpdates
+          - SecurityUpdates
+          - UpdateRollups
+          - DefinitionUpdates
+          - Tools
+        blacklist:
+        - KB2310138
+        reboot: yes
