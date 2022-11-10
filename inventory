@@ -1,2 +1,12 @@
+[special]
+localhost
+
+[apt]
 192.168.96.9
 192.168.96.10
+
+[windows]
+MANAGEMENT.MAUTO.SE
+
+[win10]
+192.168.96.108

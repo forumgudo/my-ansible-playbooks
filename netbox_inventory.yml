@@ -1,0 +1,19 @@
+# netbox_inventory.yml
+---
+plugin: netbox.netbox.nb_inventory
+api_endpoint: https://netbox.mauto.se
+token: b0cd54594a1eff41daf7a062e3aef615e87f485b
+validate_certs: false
+config_context: true
+group_by:
+  - device_roles
+  - platforms
+#  - tags
+#  - sites
+compose:
+  ansible_network_os: platform.slug
+
+query_filters:
+  - site: solna
+  - has_primary_ip: True
+  - device_types: False

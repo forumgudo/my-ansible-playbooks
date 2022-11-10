@@ -1,0 +1,8 @@
+
+NETBOX_API
+NETBOX_TOKEN
+
+
+
+validate_certs: false
+config_context: false
